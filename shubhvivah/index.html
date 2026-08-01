@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShubhVivah.com | Find Your Perfect Life Partner</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <nav>
+            <div class="logo">
+                <i class="fa-solid fa-heart"></i>
+                <h2>ShubhVivah.com</h2>
+            </div>
+
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="profile.html">Profiles</a></li>
+                <li><a href="#" onclick="secureAdmin(event)">Admin</a></li>
+                <li><a href="#membership">Membership</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+
+            <div class="buttons">
+                <a href="login.html" class="login">Login</a>
+                <a href="register.html" class="register">Register Free</a>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="overlay"></div>
+        <div class="hero-content">
+            <h1>Find Your Perfect Life Partner</h1>
+            <p>
+                India's Trusted Matrimonial Platform where beautiful relationships begin.
+                Verified Profiles • Safe & Secure • Millions of Happy Families
+            </p>
+            <div class="hero-buttons">
+                <a href="register.html" class="hero-btn">Register Free</a>
+                <a href="profile.html" class="hero-btn" style="background-color: #ffc107; color: #000000; text-decoration: none; font-weight: bold; margin-left: 15px;">Explore Profiles</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Search Bar Section -->
+    <section class="search-section">
+        <h2>Search Your Partner</h2>
+        <div class="search-box">
+            <select id="searchGender">
+                <option value="">Looking For</option>
+                <option value="Bride">Bride</option>
+                <option value="Groom">Groom</option>
+            </select>
+
+            <select id="searchAge">
+                <option value="">Age</option>
+                <option value="18-24">18-24</option>
+                <option value="25-30">25-30</option>
+                <option value="31-35">31-35</option>
+            </select>
+
+            <select id="searchReligion">
+                <option value="">Religion</option>
+                <option value="Hindu">Hindu</option>
+                <option value="Muslim">Muslim</option>
+                <option value="Sikh">Sikh</option>
+                <option value="Christian">Christian</option>
+            </select>
+
+            <select id="searchCity">
+                <option value="">City</option>
+                <option value="Delhi">Delhi</option>
+                <option value="Mumbai">Mumbai</option>
+                <option value="Bangalore">Bangalore</option>
+                <option value="Chennai">Chennai</option>
+                <option value="Ahmedabad">Ahmedabad</option>
+                <option value="Pune">Pune</option>
+                <option value="Hyderabad">Hyderabad</option>
+                <option value="Jaipur">Jaipur</option>
+            </select>
+
+            <button id="searchBtn">
+                Search
+            </button>
+        </div>
+    </section>
+
+    <section class="features">
+        <h2>Why Choose ShubhVivah?</h2>
+        <div class="cards">
+            <div class="card">
+                <i class="fa-solid fa-user-check"></i>
+                <h3>Verified Profiles</h3>
+                <p>Every profile is carefully verified for safety.</p>
+            </div>
+            <div class="card">
+                <i class="fa-solid fa-shield-heart"></i>
+                <h3>100% Secure</h3>
+                <p>Your privacy is our highest priority.</p>
+            </div>
+            <div class="card">
+                <i class="fa-solid fa-comments"></i>
+                <h3>Instant Chat</h3>
+                <p>Connect with your perfect match instantly.</p>
+            </div>
+            <div class="card">
+                <i class="fa-solid fa-crown"></i>
+                <h3>Premium Membership</h3>
+                <p>Unlock exclusive features and unlimited interests.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="profiles">
+        <h2>Featured Profiles</h2>
+        <div class="profile-container">
+            <div class="profile-card">
+                <img src="https://images.unsplash.com/photo-1610173827043-9db50e0d8ef9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8aW5kaWFuJTIwYnJpZGV8ZW58MHx8MHx8&w=1000&q=80" alt="Bride">
+                <h3>Priya Sharma</h3>
+                <p>Software Engineer</p>
+                <p>Bangalore</p>
+                <button onclick="window.location.href='profile.html'">View Profile</button>
+            </div>
+            <div class="profile-card">
+                <img src="https://www.k4fashion.com/wp-content/uploads/2020/04/Bride-And-Groom-Wedding-Outfits-8.jpg" alt="Groom">
+                <h3>Aryan Madhav</h3>
+                <p>CEO of ProxiAI</p>
+                <p>Delhi</p>
+                <button onclick="window.location.href='profile.html'">View Profile</button>
+            </div>
+            <div class="profile-card">
+                <img src="https://i.pinimg.com/736x/cf/9f/a0/cf9fa0db24a8d8e62b6c69d47f5d90b8.jpg" alt="Groom">
+                <h3>Rishabh Das</h3>
+                <p>IT Consultant</p>
+                <p>Calcutta</p>
+                <button onclick="window.location.href='profile.html'">View Profile</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="stats">
+        <div>
+            <h2>15M+</h2>
+            <p>Registered Users</p>
+        </div>
+        <div>
+            <h2>500+</h2>
+            <p>Successful Marriages</p>
+        </div>
+        <div>
+            <h2>25+</h2>
+            <p>Cities Covered</p>
+        </div>
+        <div>
+            <h2>99.69%</h2>
+            <p>User Satisfaction</p>
+        </div>
+    </section>
+
+    <section class="premium" id="membership">
+        <h2>Premium Membership</h2>
+        <div class="plans">
+            <div class="plan">
+                <h3>Gold</h3>
+                <h1>₹999</h1>
+                <p>3 Months</p>
+                <button>Choose Plan</button>
+            </div>
+            <div class="plan featured">
+                <h3>Diamond</h3>
+                <h1>₹1999</h1>
+                <p>6 Months</p>
+                <button>Most Popular</button>
+            </div>
+            <div class="plan">
+                <h3>Platinum</h3>
+                <h1>₹2999</h1>
+                <p>12 Months</p>
+                <button>Choose Plan</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials">
+    <h2>❤️ Success Stories</h2>
+
+    <div class="testimonial">
+        <p>
+            "We found our soulmate through ShubhVivah. The experience was smooth, secure, and truly life-changing. We are forever grateful!"
+        </p>
+        <h3>— Rishabh Das & Anamika Roy</h3>
+    </div>
+
+    <div class="testimonial">
+        <p>
+            "Friendship became trust, trust became love, and love became our forever. Thank you, ShubhVivah, for bringing us together."
+        </p>
+        <h3>— Aryan Madhav & Supriya Sule</h3>
+    </div>
+
+    <div class="testimonial">
+        <p>
+            "A simple profile led us to the most beautiful chapter of our lives. We couldn't have asked for a better beginning."
+        </p>
+        <h3>— Karan Mehta & Priya Sharma</h3>
+    </div>
+
+    <div class="testimonial">
+        <p>
+            "We were searching for the right person, but instead found our best friend and life partner. Thank you, ShubhVivah!"
+        </p>
+        <h3>— Rahul Verma & Sneha Iyer</h3>
+    </div>
+
+</section>
+
+    <footer id="contact">
+        <div class="footer-container">
+            <div class="footer-logo">
+                <h2>❤️ ShubhVivah.com</h2>
+                <p>
+                    India's Trusted Matrimonial Platform dedicated to connecting hearts
+                    and creating lifelong relationships.
+                </p>
+            </div>
+
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <a href="index.html" style="color: #ffc107; text-decoration: none;">Home</a>
+                <a href="profile.html" style="color: #ffc107; text-decoration: none;">Search Partner</a>
+                <a href="#" onclick="secureAdmin(event)" style="color: #ffc107; text-decoration: none;">Admin</a>
+                <a href="#membership" style="color: #ffc107; text-decoration: none;">Membership</a>
+                <a href="#contact" style="color: #ffc107; text-decoration: none;">Contact</a>
+            </div>
+
+            <div class="footer-office">
+                <h3>Head Office</h3>
+                <p>
+                    <strong>ShubhVivah.com Limited</strong>
+                </p>
+                <p>
+                    GST Road,<br>
+                    Chengalpattu,<br>
+                    Chennai,<br>
+                    Tamil Nadu – 603001<br>
+                    India
+                </p>
+            </div>
+
+            <div class="footer-contact">
+                <h3>Contact</h3>
+                <p>📞 +91 98765 43210</p>
+                <p>📧 support@shubhvivah.com</p>
+                <p>🕒 Mon - Sat : 9:00 AM - 7:00 PM</p>
+            </div>
+        </div>
+
+        <hr>
+
+        <p class="copyright">
+            © 2026 <strong>ShubhVivah.com Limited</strong>. All Rights Reserved.
+        </p>
+    </footer>
+
+    <script>
+        // Secure Admin Functionality
+        function secureAdmin(event) {
+            event.preventDefault();
+            let password = prompt("Enter Developer / Admin Password:");
+            if (password === "RA2511003010461") { 
+                window.location.href = "admin.html";
+            } else if (password !== null) {
+                alert("Incorrect password! Access denied.");
+            }
+        }
+    </script>
+    <script src="script.js"></script>
+
+</body>
+
+</html>

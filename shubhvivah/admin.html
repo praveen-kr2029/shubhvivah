@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Owner Dashboard | ShubhVivah.com</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; background: #fff8f8; }
+        h1 { color: #650000; }
+        table { width: 100%; border-collapse: collapse; background: white; margin-top: 20px; }
+        th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+        th { background: #650000; color: white; }
+        tr:nth-child(even) { background: #f9f9f9; }
+    </style>
+</head>
+<body>
+
+    <h1>👑 Owner Dashboard - Registered Applicants</h1>
+    <p>Total applications registered in database:</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Full Name</th>
+                <th>Email</th>
+                <th>Gender</th>
+                <th>City</th>
+            </tr>
+        </thead>
+        <tbody id="userTable">
+            <tr><td colspan="5">Loading registrations...</td></tr>
+        </tbody>
+    </table>
+
+    <script>
+        async function fetchAdminData() {
+            try {
+                const response = await fetch("http://localhost:8080/api/auth/admin/users");
+                const users = await response.json();
+                const table = document.getElementById("userTable");
+                table.innerHTML = "";
+
+                users.forEach(user => {
+                    table.innerHTML += `
+                        <tr>
+                            <td>${user.id}</td>
+                            <td><strong>${user.fullName}</strong></td>
+                            <td>${user.email}</td>
+                            <td>${user.gender}</td>
+                            <td>${user.city}</td>
+                        </tr>
+                    `;
+                });
+            } catch (error) {
+                console.error(error);
+            }
+        }
+
+        fetchAdminData();
+    </script>
+</body>
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matrimonial Profiles | ShubhVivah</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .container {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        .profile-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+        .profile-card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            border: 1px solid #eee;
+            transition: transform 0.3s ease;
+        }
+        .profile-card:hover {
+            transform: translateY(-5px);
+        }
+        .profile-card h3 {
+            margin-top: 0;
+            color: #8b0000;
+        }
+        .profile-card p {
+            margin: 8px 0;
+            color: #555;
+        }
+        .error-msg {
+            color: #d9534f;
+            background: #fdf7f7;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #f5c6cb;
+        }
+        .no-data {
+            color: #666;
+            font-size: 1.1rem;
+            padding: 20px 0;
+        }
+        nav a {
+            color: #ffc107 !important;
+            text-decoration: none;
+            margin-left: 15px;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        .interest-btn {
+            background-color: #ffc107;
+            color: #000;
+            border: none;
+            padding: 8px 12px;
+            margin-top: 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            width: 100%;
+            transition: background 0.2s;
+        }
+        .interest-btn:hover {
+            background-color: #e0a800;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <h2><a href="index.html" style="color:#ffc107; text-decoration:none;">ShubhVivah.com</a></h2>
+        <div>
+            <a href="index.html">Home</a>
+            <a href="profile.html">Profiles</a>
+            <a href="login.html" class="login">Login</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1>Matrimonial Profiles</h1>
+        <div id="resultsSummary" style="color: #666; margin-bottom: 15px;"></div>
+        
+        <div id="profilesContainer" class="profile-grid">
+            <p>Loading profiles...</p>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const gender = urlParams.get('gender') || '';
+            const city = urlParams.get('city') || '';
+
+            const resultsSummary = document.getElementById("resultsSummary");
+            if (gender || city) {
+                resultsSummary.innerHTML = `Showing results for: <strong>${gender || 'All'}</strong> ${city ? 'in <strong>' + city + '</strong>' : ''}`;
+            }
+
+            const apiUrl = `http://localhost:8080/api/auth/search?gender=${encodeURIComponent(gender)}&city=${encodeURIComponent(city)}`;
+
+            fetch(apiUrl)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error("Server response failed");
+                    }
+                    return response.json();
+                })
+                .then(profiles => {
+                    const container = document.getElementById("profilesContainer");
+                    container.innerHTML = "";
+
+                    if (profiles.length === 0) {
+                        container.innerHTML = `<p class="no-data">No profiles found matching your search criteria. Try broadening your filters!</p>`;
+                        return;
+                    }
+
+                    profiles.forEach(user => {
+                        const card = document.createElement("div");
+                        card.className = "profile-card";
+                        card.innerHTML = `
+                            <h3>${user.fullName || 'User'}</h3>
+                            <p><strong>Gender:</strong> ${user.gender || 'Not specified'}</p>
+                            <p><strong>City:</strong> ${user.city || 'Not specified'}</p>
+                            <p><strong>Email:</strong> ${user.email || 'N/A'}</p>
+                            <button class="interest-btn" onclick="sendInterest(this)">
+                                <i class="fa-solid fa-heart" style="color: #d63031;"></i> Send Interest
+                            </button>
+                        `;
+                        container.appendChild(card);
+                    });
+                })
+                .catch(error => {
+                    console.error("Fetch Error:", error);
+                    document.getElementById("profilesContainer").innerHTML = `
+                        <div class="error-msg">
+                            <strong>Could not load search results.</strong><br>
+                            Ensure your Spring Boot application is running on <code>http://localhost:8080</code>.
+                        </div>
+                    `;
+                });
+        });
+
+        function sendInterest(btn) {
+            btn.innerHTML = '<i class="fa-solid fa-check" style="color: green;"></i> Interest Sent!';
+            btn.style.backgroundColor = '#fff3cd';
+            btn.disabled = true;
+            alert("Interest sent successfully! ❤️");
+        }
+    </script>
+</body>
+</html>
