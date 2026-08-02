@@ -105,7 +105,7 @@
                 resultsSummary.innerHTML = `Showing results for: <strong>${gender || 'All'}</strong> ${city ? 'in <strong>' + city + '</strong>' : ''}`;
             }
 
-            const apiUrl = `http://localhost:8080/api/auth/search?gender=${encodeURIComponent(gender)}&city=${encodeURIComponent(city)}`;
+            const apiUrl = `/api/auth/search?gender=${encodeURIComponent(gender)}&city=${encodeURIComponent(city)}`;
 
             fetch(apiUrl)
                 .then(response => {
@@ -143,7 +143,7 @@
                     document.getElementById("profilesContainer").innerHTML = `
                         <div class="error-msg">
                             <strong>Could not load search results.</strong><br>
-                            Ensure your Spring Boot application is running on <code>http://localhost:8080</code>.
+                            Please check your server connection.
                         </div>
                     `;
                 });
