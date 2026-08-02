@@ -141,7 +141,7 @@ if (loginForm) {
         const password = document.getElementById("password").value;
 
         try {
-            const response = await fetch("https://shubhvivah-production.up.railway.app", {
+            const response = await fetch("/api/auth/profiles", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
