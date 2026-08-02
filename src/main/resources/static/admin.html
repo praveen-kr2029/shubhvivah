@@ -36,7 +36,7 @@
     <script>
         async function fetchAdminData() {
             try {
-                const response = await fetch("http://localhost:8080/api/auth/admin/users");
+                const response = await fetch("/api/auth/admin/users");
                 const users = await response.json();
                 const table = document.getElementById("userTable");
                 table.innerHTML = "";
