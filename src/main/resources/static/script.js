@@ -129,7 +129,7 @@ document.querySelectorAll(".card, .profile-card, .plan, .testimonial").forEach(e
 });
 
 // ==============================
-// 8. Live Backend Login Integration
+// 8. Live Backend Login Integration (FIXED)
 // ==============================
 const loginForm = document.getElementById("loginForm");
 
@@ -141,7 +141,7 @@ if (loginForm) {
         const password = document.getElementById("password").value;
 
         try {
-            const response = await fetch("/api/auth/profiles", {
+            const response = await fetch("/api/auth/login", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -169,7 +169,7 @@ if (loginForm) {
 }
 
 // ==============================
-// 9. Live Backend Registration Integration
+// 9. Live Backend Registration Integration (FIXED)
 // ==============================
 const registerForm = document.getElementById("registerForm");
 
@@ -184,7 +184,7 @@ if (registerForm) {
         const city = document.getElementById("city") ? document.getElementById("city").value : "";
 
         try {
-            const response = await fetch("http://localhost:8080/api/auth/register", {
+            const response = await fetch("/api/auth/register", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
